@@ -18,7 +18,7 @@ func main() {
 	flag.Parse()
 	payloadPath := flag.Arg(0)
 	if payloadPath == "" {
-		fmt.Println("Usage: rogue-server [/path/to/payload|-]")
+		fmt.Println("Usage: rogue-redis [/path/to/payload|-]")
 		os.Exit(1)
 	}
 
@@ -54,7 +54,7 @@ func main() {
 				conn.WriteString("OK")
 			case "quit":
 				conn.WriteString("OK")
-				conn.Close()
+				_ = conn.Close()
 			case "replconf":
 				conn.WriteString("OK")
 			case "psync":
